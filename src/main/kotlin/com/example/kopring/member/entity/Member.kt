@@ -1,6 +1,7 @@
 package com.example.kopring.member.entity
 
 import com.example.kopring.member.domain.Gender
+import com.example.kopring.member.dto.MemberResponseDto
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -20,4 +21,5 @@ class Member {
 
     val gender: Gender? = null
 
+    fun toResponseDto(): MemberResponseDto = MemberResponseDto(id!!, firstName, lastName)
 }
