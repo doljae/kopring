@@ -2,12 +2,14 @@ package com.example.kopring.member.entity
 
 import com.example.kopring.member.domain.Gender
 import com.example.kopring.member.dto.MemberResponseDto
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import org.springframework.data.annotation.CreatedDate
+import org.springframework.data.annotation.LastModifiedDate
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
+import java.time.OffsetDateTime
+import javax.persistence.*
 
 @Entity
+@EntityListeners(AuditingEntityListener::class)
 class Member {
 
     @Id
@@ -19,7 +21,14 @@ class Member {
 
     val age: Int? = null
 
+    @Enumerated(EnumType.STRING)
     val gender: Gender? = null
+
+    @CreatedDate
+    var createdAt: OffsetDateTime? = null
+
+    @LastModifiedDate
+    var updatedAt: OffsetDateTime? = null
 
     fun toResponseDto(): MemberResponseDto = MemberResponseDto(id!!, firstName, lastName)
 }
