@@ -21,5 +21,5 @@ class Member {
 
     val gender: Gender? = null
 
-    fun toResponseDto(): MemberResponseDto = MemberResponseDto(id!!, firstName, lastName)
+    fun toResponseDto(): MemberResponseDto = MemberResponseDto(id!!, firstName, lastName, age, gender)
 }
